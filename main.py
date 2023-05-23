@@ -238,6 +238,7 @@ class App:
         with open(filepath, "w", encoding='utf-8') as file:
             for ip in self.VentanaResultado.get(0, tk.END):
                 if "Alto" in ip:
+                    print("alto", ip)
                     aux = re.findall(r'[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}', ip)
                     file.write(aux[0] + "\n")
         # Inform the user that the file was saved
@@ -257,7 +258,7 @@ class App:
         
   
     def PrintaLinea(self):
-
+        print("printaLinea", self.IpUnica)
         if(self.IpUnica):
             if (self.data["data"]["abuseConfidenceScore"]==0 and self.data["data"]["abuseConfidenceScore"]<10):
                 self.VentanaResultado.configure(fg="#000", justify="left")
@@ -270,12 +271,15 @@ class App:
                 self.PrintaSoloIPAlto()
         else:  
             if (self.data["data"]["abuseConfidenceScore"]==0 and self.data["data"]["abuseConfidenceScore"]<10):
+                print("1er if")
                 self.VentanaResultado.configure(fg="#000", justify="left")
                 self.PrintaBajo()
             if self.IpUnica == False and (self.data["data"]["abuseConfidenceScore"]< 50 and  self.data["data"]["abuseConfidenceScore"]>= 10):
+                print("2er if")
                 self.VentanaResultado.configure(fg="#000", justify="left")
                 self.PrintaMedio()
-            if  self.data["data"]["ipAddress"]==None and (self.data["data"]["abuseConfidenceScore"]>= 50):
+            if  (self.data["data"]["abuseConfidenceScore"]>= 50):
+                print("3er if")
                 self.VentanaResultado.configure(fg="#000", justify="left")
                 self.PrintaAlto()
        
