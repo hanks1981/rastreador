@@ -10,6 +10,8 @@ class App:
     Lista = None;
     SoloMaliciosas = None;
     IpUnica = True;
+    Analizando = False;
+
     def __init__(self, root):
         # Create the main window
         root.title("BUSCADOR") 
@@ -31,7 +33,7 @@ class App:
         self.EtiquetaApi["bg"] = "#0aa"
         self.EtiquetaApi["justify"] = "center"
         self.EtiquetaApi["text"] = "Insert Api_ Key: "
-        self.EtiquetaApi.place(x=540,y=30,width=90,height=30)
+        self.EtiquetaApi.place(x=520,y=30,width=90,height=30)
         
         self.ApiKeyText=tk.Entry(root)
         self.ApiKeyText["bg"] = "#ffffff"
@@ -94,12 +96,12 @@ class App:
         self.EligeArchivoBoton=tk.Button()
         ft = tkFont.Font(family='Times',size=10)
         self.EligeArchivoBoton["font"] = ft
-        self.EligeArchivoBoton["fg"] = "#000000"
+        self.EligeArchivoBoton["fg"] = "#000"
         self.EligeArchivoBoton["justify"] = "center"
         self.EligeArchivoBoton["text"] = "Choise file"
         self.EligeArchivoBoton.place(x=20,y=120,width=200,height=62)
         # self.EligeArchivoBoton["bg"] = "#e4cc52"
-        self.EligeArchivoBoton.configure( fg="#31dc2b")
+        # self.EligeArchivoBoton.configure( fg="#31dc2b")
         self.EligeArchivoBoton["command"] = self.Elige_Archivo
         
         # self.NombreArchivoTexto= tk.Label()
@@ -115,22 +117,23 @@ class App:
         self.Rastrea=tk.Button()
         ft = tkFont.Font(family='Times',size=10)
         self.Rastrea["font"] = ft
-        self.Rastrea["fg"] = "#31dc2b"
+        self.Rastrea["fg"] = "#000"
+        # self.Rastrea["bg"] = "#333"
         self.Rastrea["justify"] = "center"
         self.Rastrea["text"] = "Check list"
         self.Rastrea.place(x=20,y=200,width=200,height=40)
-        self.Rastrea["bg"] = "#31dc2b"
+        
         self.Rastrea["command"] = self.Rastrea_AbuseIP
         
         
         self.GuardaArchivo=tk.Button()
         ft = tkFont.Font(family='Times',size=10)
         self.GuardaArchivo["font"] = ft
-        self.GuardaArchivo["fg"] = "#31dc2b"
+        self.GuardaArchivo["fg"] = "#000"
         self.GuardaArchivo["justify"] = "center"
         self.GuardaArchivo["text"] = "Export malicious IP to File"
         self.GuardaArchivo.place(x=20,y=260,width=200,height=40)
-        self.GuardaArchivo["bg"] = "yellow"
+        # self.GuardaArchivo["bg"] = "yellow"
         self.GuardaArchivo["command"] = self.Guarda_Archivos
         
         self.VentanaResultado=tk.Listbox()
@@ -151,31 +154,63 @@ class App:
         self.BotonSalir["fg"] = "#333333"
         self.BotonSalir["justify"] = "center"
         self.BotonSalir["text"] = "Cerrar"
-        self.BotonSalir.place(x=20,y=620,width=70,height=35)
+        self.BotonSalir.place(x=20,y=580,width=70,height=35)
         self.BotonSalir["command"] = self.Cierra_Ventana
+
+
+        # comprobadores
+        self.EtiquetaArchivo= tk.Label()
+        ft = tkFont.Font(family='Times',size=10)
+        self.EtiquetaArchivo["font"] = ft
+        self.EtiquetaArchivo["fg"] = "#000"
+        self.EtiquetaArchivo["bg"] = "red"
+        self.EtiquetaArchivo["justify"] = "left"
+        self.EtiquetaArchivo["text"] = "Archivo cargado"
+        self.EtiquetaArchivo.place(x=20,y=320,width=200,height=30)
+
+        self.EtiquetaAnalizado= tk.Label()
+        ft = tkFont.Font(family='Times',size=10)
+        self.EtiquetaAnalizado["font"] = ft
+        self.EtiquetaAnalizado["fg"] = "#000"
+        self.EtiquetaAnalizado["bg"] = "red"
+        self.EtiquetaAnalizado["justify"] = "left"
+        self.EtiquetaAnalizado["text"] = "IPs Analizadas"
+        self.EtiquetaAnalizado.place(x=20,y=380,width=200,height=30)
+
+        self.EtiquetaExportado= tk.Label()
+        ft = tkFont.Font(family='Times',size=10)
+        self.EtiquetaExportado["font"] = ft
+        self.EtiquetaExportado["fg"] = "#000"
+        self.EtiquetaExportado["bg"] = "red"
+        self.EtiquetaExportado["justify"] = "left"
+        self.EtiquetaExportado["text"] = "Archivo exportado"
+        self.EtiquetaExportado.place(x=20,y=440,width=200,height=30)
+
+
+
+    def Cambia_Estado_Etiqueta_Archivo(self):
+        self.EtiquetaArchivo["bg"] = "#A2FF33"
+
+    def Cambia_Estado_Etiqueta_Analizadas_acabado(self):
+        self.EtiquetaAnalizado["bg"] = "#A2FF33"
+
+    def Cambia_Estado_Etiqueta_exportadas(self):
+        self.EtiquetaExportado["bg"] = "#A2FF33"
+
         
 
     def Cierra_Ventana(self):
         print("cierra")
         root.destroy()
-    #     # global API_KEY_WINDOW
-    #     # API_KEY_WINDOW = tk.Toplevel(root)
-    #     # API_KEY_WINDOW.geometry("250x100")
-    #     # API_KEY_WINDOW.title("API KEY")
-    #     # api_key_label = tk.Label(API_KEY_WINDOW, text="Enter your Abuseipdb API key:")
-    #     # api_key_label.pack()
-    #     # global API_KEY_ENTRY
-    #     # API_KEY_ENTRY = tk.Entry(API_KEY_WINDOW)
-    #     # API_KEY_ENTRY.pack()
-    #     # save_api_key_button = tk.Button(API_KEY_WINDOW, text="Save", command=save_api_key)
-    #     # save_api_key_button.pack()
-    
+ 
     def Elige_Archivo(self):
         filepath = filedialog.askopenfilename()
         with open(filepath, 'r', encoding='utf-8') as file:
             self.Lista = file.read()
         self.Lista = re.findall(r'[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}', self.Lista)
         self.Lista = list(set(self.Lista))
+        if self.Lista != []:
+            self.Cambia_Estado_Etiqueta_Archivo()
         self.VentanaResultado.configure(justify="center")
         self.VentanaResultado.insert(tk.END , '                                                                                                     Lista IPs ' )
         self.VentanaResultado.insert(tk.END, '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------')
@@ -195,12 +230,17 @@ class App:
         self.VentanaResultado.configure(justify="center")
         self.VentanaResultado.insert(tk.END ,'Lista De IPs analizadas' )
         self.VentanaResultado.insert(tk.END, '-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------')
+        self.Cambia_Estado_Etiqueta_Analizadas_pendiente()
+        self.Analiza()
+        
+                
+
+    def Analiza(self):
         for self.ip in self.Lista:
-           
             try:
                 response = requests.get(f'https://api.abuseipdb.com/api/v2/check',
                                         params={'ipAddress': self.ip, 'maxAgeInDays': 90},
-                                        headers={'Key': "894849a6815dc5dd598d42bd8c3cad1e3e2af0bf87ef8525b629ac17de2f631e0d7c2cbee8cf96ef"}, timeout=5)
+                                        headers={'key': "85ab2690d87e8423af50b6ec2f948f7f8af224636a75ccaff7c1c5bb9bb3b6557a7e9f3ed43f7499"}, timeout=5)
                 self.data = response.json()
             except requests.exceptions.RequestException as e:
                 self.ErrorConexionAPi()
@@ -208,11 +248,13 @@ class App:
             if self.data:
                 self.PrintaLinea()
                 
+
     def Busca_IP(self):
        #borramos lista anterior
         self.IpUnica = True;
         Apikey = self.ApiKeyText.get()
         Only_IP = self.BusquedaUnica.get()
+        
         self.VentanaResultado.delete(0, tk.END)
         self.VentanaResultado.configure(justify="center")
         self.VentanaResultado.insert(tk.END ,'Lista De IPs analizadas' )
@@ -220,15 +262,16 @@ class App:
         try:
             response = requests.get(f'https://api.abuseipdb.com/api/v2/check',
                                     params={'ipAddress': Only_IP, 'maxAgeInDays': 90},
-                                    headers={'Key': Apikey}, timeout=5)
+                                     headers={'key': "85ab2690d87e8423af50b6ec2f948f7f8af224636a75ccaff7c1c5bb9bb3b6557a7e9f3ed43f7499"}, timeout=5)
             self.data = response.json()
+            if self.data:
+               self.BusquedaUnica.delete(0, tk.END)
         except requests.exceptions.RequestException as e:
             self.ErrorConexionAPi()
             return
         if self.data:
             self.PrintaLinea()
-                
-                
+                           
     def Guarda_Archivos(self):
         # Ask user where they want to save the file
         filepath = filedialog.asksaveasfilename(defaultextension=".txt",
@@ -244,8 +287,6 @@ class App:
         # Inform the user that the file was saved
         messagebox.showinfo("Save to File", "File saved successfully!")
         
-        
-  
     def MuestraResultadoApi():
         print("todas")
         
@@ -258,7 +299,6 @@ class App:
         
   
     def PrintaLinea(self):
-        print("printaLinea", self.IpUnica)
         if(self.IpUnica):
             if (self.data["data"]["abuseConfidenceScore"]==0 and self.data["data"]["abuseConfidenceScore"]<10):
                 self.VentanaResultado.configure(fg="#000", justify="left")
@@ -270,6 +310,7 @@ class App:
                 self.VentanaResultado.configure(fg="#000", justify="left")
                 self.PrintaSoloIPAlto()
         else:  
+            self.Cambia_Estado_Etiqueta_Analizadas_acabado()
             if (self.data["data"]["abuseConfidenceScore"]==0 and self.data["data"]["abuseConfidenceScore"]<10):
                 print("1er if")
                 self.VentanaResultado.configure(fg="#000", justify="left")
