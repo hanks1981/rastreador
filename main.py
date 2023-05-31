@@ -230,7 +230,6 @@ class App:
         self.VentanaResultado.configure(justify="center")
         self.VentanaResultado.insert(tk.END ,'Lista De IPs analizadas' )
         self.VentanaResultado.insert(tk.END, '-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------')
-        self.Cambia_Estado_Etiqueta_Analizadas_pendiente()
         self.Analiza()
         
                 
@@ -247,7 +246,7 @@ class App:
                 return
             if self.data:
                 self.PrintaLinea()
-                
+
 
     def Busca_IP(self):
        #borramos lista anterior
@@ -286,6 +285,7 @@ class App:
                     file.write(aux[0] + "\n")
         # Inform the user that the file was saved
         messagebox.showinfo("Save to File", "File saved successfully!")
+        self.Cambia_Estado_Etiqueta_exportadas()
         
     def MuestraResultadoApi():
         print("todas")
@@ -312,15 +312,12 @@ class App:
         else:  
             self.Cambia_Estado_Etiqueta_Analizadas_acabado()
             if (self.data["data"]["abuseConfidenceScore"]==0 and self.data["data"]["abuseConfidenceScore"]<10):
-                print("1er if")
                 self.VentanaResultado.configure(fg="#000", justify="left")
                 self.PrintaBajo()
             if self.IpUnica == False and (self.data["data"]["abuseConfidenceScore"]< 50 and  self.data["data"]["abuseConfidenceScore"]>= 10):
-                print("2er if")
                 self.VentanaResultado.configure(fg="#000", justify="left")
                 self.PrintaMedio()
             if  (self.data["data"]["abuseConfidenceScore"]>= 50):
-                print("3er if")
                 self.VentanaResultado.configure(fg="#000", justify="left")
                 self.PrintaAlto()
        
@@ -349,7 +346,6 @@ class App:
         self.VentanaResultado.insert(tk.END, '-------------------------------------------------------------------------------------------------------------------------------------------------------------') 
         
     def PrintaSoloIPBajo(self):
-        print("quee es self", self.data)
         self.VentanaResultado.insert(tk.END, f' Riesgo: Bajo - {self.data["data"]["ipAddress"]} - Score: {self.data["data"]["abuseConfidenceScore"]} - isp: {self.data["data"]["isp"]}')
         self.VentanaResultado.insert(tk.END, '-------------------------------------------------------------------------------------------------------------------------------------------------------------')
         
