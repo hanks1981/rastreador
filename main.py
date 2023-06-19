@@ -25,7 +25,7 @@ class App:
         screenheight = root.winfo_screenheight()
         alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
         root.geometry(alignstr)
-        root.configure(bg='#0aa')
+        root.configure(bg='#1B2433')
         root.resizable(width=False, height=False)
         
       
@@ -34,10 +34,10 @@ class App:
         ft = tkFont.Font(family='Times',size=10)
         self.EtiquetaApi["font"] = ft
         self.EtiquetaApi["fg"] = "#000"
-        self.EtiquetaApi["bg"] = "#0aa"
+        self.EtiquetaApi["bg"] = "#1A3F52"
         self.EtiquetaApi["justify"] = "center"
         self.EtiquetaApi["text"] = "Insert Api_ Key: "
-        self.EtiquetaApi.place(x=520,y=30,width=90,height=30)
+        self.EtiquetaApi.place(x=520,y=30,width=100,height=30)
         
         self.ApiKeyText=tk.Entry(root)
         self.ApiKeyText["bg"] = "#ffffff"
@@ -55,7 +55,7 @@ class App:
         ft = tkFont.Font(family='Times',size=10)
         self.EtiquetaIPUnica["font"] = ft
         self.EtiquetaIPUnica["fg"] = "#000"
-        self.EtiquetaIPUnica["bg"] = "#0aa"
+        self.EtiquetaIPUnica["bg"] = "#365B6D"
         self.EtiquetaIPUnica["justify"] = "left"
         self.EtiquetaIPUnica["text"] = "Only 1 IP"
         self.EtiquetaIPUnica.place(x=20,y=10,width=200,height=30)
@@ -92,15 +92,13 @@ class App:
         self.RadioButtonInAddrArpa["command"] = self.pruebaradiobutton
 
       
-
-   
         #LISTA DE IPs
         
         self.EtiquetaIPLista= tk.Label()
         ft = tkFont.Font(family='Times',size=10)
         self.EtiquetaIPLista["font"] = ft
         self.EtiquetaIPLista["fg"] = "#000"
-        self.EtiquetaIPLista["bg"] = "#0aa"
+        self.EtiquetaIPLista["bg"] = "#A5A6AB"
         self.EtiquetaIPLista["justify"] = "left"
         self.EtiquetaIPLista["text"] = "Multiple Ips"
         self.EtiquetaIPLista.place(x=20,y=90,width=200,height=30) 
@@ -161,7 +159,7 @@ class App:
         ft = tkFont.Font(family='Times',size=10)
         self.EtiquetaArchivo["font"] = ft
         self.EtiquetaArchivo["fg"] = "#000"
-        self.EtiquetaArchivo["bg"] = "red"
+        self.EtiquetaArchivo["bg"] = "#DFA18C"
         self.EtiquetaArchivo["justify"] = "left"
         self.EtiquetaArchivo["text"] = "Archivo cargado"
         self.EtiquetaArchivo.place(x=20,y=320,width=200,height=30)
@@ -170,7 +168,7 @@ class App:
         ft = tkFont.Font(family='Times',size=10)
         self.EtiquetaAnalizado["font"] = ft
         self.EtiquetaAnalizado["fg"] = "#000"
-        self.EtiquetaAnalizado["bg"] = "red"
+        self.EtiquetaAnalizado["bg"] = "#DFA18C"
         self.EtiquetaAnalizado["justify"] = "left"
         self.EtiquetaAnalizado["text"] = "IPs Analizadas"
         self.EtiquetaAnalizado.place(x=20,y=380,width=200,height=30)
@@ -179,7 +177,7 @@ class App:
         ft = tkFont.Font(family='Times',size=10)
         self.EtiquetaExportado["font"] = ft
         self.EtiquetaExportado["fg"] = "#000"
-        self.EtiquetaExportado["bg"] = "red"
+        self.EtiquetaExportado["bg"] = "#DFA18C"
         self.EtiquetaExportado["justify"] = "left"
         self.EtiquetaExportado["text"] = "Archivo exportado"
         self.EtiquetaExportado.place(x=20,y=440,width=200,height=30)
@@ -187,13 +185,13 @@ class App:
 
 
     def Cambia_Estado_Etiqueta_Archivo(self):
-        self.EtiquetaArchivo["bg"] = "#A2FF33"
+        self.EtiquetaArchivo["bg"] = "#81F79F"
 
     def Cambia_Estado_Etiqueta_Analizadas_acabado(self):
-        self.EtiquetaAnalizado["bg"] = "#A2FF33"
+        self.EtiquetaAnalizado["bg"] = "#81F79F"
 
     def Cambia_Estado_Etiqueta_exportadas(self):
-        self.EtiquetaExportado["bg"] = "#A2FF33"
+        self.EtiquetaExportado["bg"] = "#81F79F"
 
     def pruebaradiobutton(self):
         print("radiobuton activo")
