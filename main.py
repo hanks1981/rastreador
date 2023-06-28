@@ -127,7 +127,7 @@ class App:
         self.GuardaArchivo["font"] = ft
         self.GuardaArchivo["fg"] = "#000"
         self.GuardaArchivo["justify"] = "center"
-        self.GuardaArchivo["text"] = "Export malicious IP to File"
+        self.GuardaArchivo["text"] = "Export IPs report to file"
         self.GuardaArchivo.place(x=20,y=260,width=200,height=40)
         # self.GuardaArchivo["bg"] = "yellow"
         self.GuardaArchivo["command"] = self.Guarda_Archivos
